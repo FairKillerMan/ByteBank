@@ -10,25 +10,37 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            new ContaCorrente();
-            ContaCorrente contaDoBanco = new ContaCorrente();
-            contaDoBanco.titular = "Thiago";
-            contaDoBanco.agencia = 863;
-            contaDoBanco.numero = 255212;
-            contaDoBanco.saldo = 3500;
+            ContaCorrente contaDoBruno = new ContaCorrente();
 
+            contaDoBruno.titular = "Bruno";
 
-            Console.WriteLine(contaDoBanco.titular);
-            Console.WriteLine("Agência: " + contaDoBanco.agencia);
-            Console.WriteLine("Saldo: " + contaDoBanco.saldo);
-            contaDoBanco.saldo += 250;
-            Console.WriteLine("Saldo: " + contaDoBanco.saldo);
+            Console.WriteLine(contaDoBruno.saldo);
+
+            bool resultadoSaque = contaDoBruno.Sacar(500);
+
+            Console.WriteLine(contaDoBruno.saldo);
+            Console.WriteLine(resultadoSaque);
+            Console.WriteLine(contaDoBruno.saldo);
+
+            contaDoBruno.Depositar(500);
+            Console.WriteLine(contaDoBruno.saldo);
+
+            ContaCorrente contaDaGabriela = new ContaCorrente();
+
+            contaDaGabriela.titular = "Gabriela";
+
+            Console.WriteLine("Saldo do Bruno: " + contaDoBruno.saldo);
+            Console.WriteLine("Saldo da Gabriela: " + contaDaGabriela.saldo);
+
+            contaDoBruno.Transferir(200, contaDaGabriela);
+
+            Console.WriteLine("Saldo do Bruno: " + contaDoBruno.saldo);
+            Console.WriteLine("Saldo da Gabriela: " + contaDaGabriela.saldo);
 
             Console.ReadLine();
         }
     }
 }
-
 /*
 Descrição: Controle de contas-correntes, que para o gerenciamento de um banco é algo recorrente e natural.
 
