@@ -7,8 +7,6 @@ public class ContaCorrente
 
     private double _saldo = 100;
 
-    private int _idade = 10;
-
     public double Saldo{
         get
         {
