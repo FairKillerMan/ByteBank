@@ -6,37 +6,25 @@ using System.Threading.Tasks;
 
 namespace ByteBank
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            ContaCorrente contaDoBruno = new ContaCorrente();
+            Cliente gabriela = new Cliente();
 
-            contaDoBruno.titular = "Bruno";
 
-            Console.WriteLine(contaDoBruno.saldo);
+            gabriela.nome = "Gabriela";
+            gabriela.profissao = "Desenvolvedor c#";
+            gabriela.cpf = "434.562.878-20";
 
-            bool resultadoSaque = contaDoBruno.Sacar(500);
+            ContaCorrente conta = new ContaCorrente();
+            conta.titular = gabriela;
+            conta.saldo = 500;
+            conta.agencia = 563;
+            conta.numero = 5364736;
 
-            Console.WriteLine(contaDoBruno.saldo);
-            Console.WriteLine(resultadoSaque);
-            Console.WriteLine(contaDoBruno.saldo);
-
-            contaDoBruno.Depositar(500);
-            Console.WriteLine(contaDoBruno.saldo);
-
-            ContaCorrente contaDaGabriela = new ContaCorrente();
-
-            contaDaGabriela.titular = "Gabriela";
-
-            Console.WriteLine("Saldo do Bruno: " + contaDoBruno.saldo);
-            Console.WriteLine("Saldo da Gabriela: " + contaDaGabriela.saldo);
-
-            contaDoBruno.Transferir(200, contaDaGabriela);
-
-            Console.WriteLine("Saldo do Bruno: " + contaDoBruno.saldo);
-            Console.WriteLine("Saldo da Gabriela: " + contaDaGabriela.saldo);
-
+            Console.WriteLine(gabriela.nome);
+            Console.WriteLine(conta.titular.nome);
             Console.ReadLine();
         }
     }

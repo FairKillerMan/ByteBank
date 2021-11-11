@@ -1,10 +1,16 @@
-﻿public class ContaCorrente
+﻿using ByteBank;
+public class ContaCorrente
 {
-    public string titular;
+    public Cliente titular;
     public int agencia;
     public int numero;
     public double saldo;
 
+    public void Depositar(double valor)
+    {
+        this.saldo += valor;
+    }
+ 
     public bool Sacar(double valor)
     {
         if (this.saldo < valor)
@@ -17,13 +23,7 @@
             return true;
         }
     }
-
-    public void Depositar(double valor)
-    {
-        this.saldo += valor;
-    }
-
-    public bool Transferir(double valor, ContaCorrente contaDestino)
+    public bool Transferir(double valor, ContaCorrente destino)
     {
         if (this.saldo < valor)
         {
@@ -32,7 +32,7 @@
         else
         {
             this.saldo -= valor;
-            contaDestino.Depositar(valor);
+            destino.Depositar(valor);
             return true;
         }
     }
