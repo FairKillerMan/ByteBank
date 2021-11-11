@@ -1,47 +1,51 @@
 ﻿using ByteBank;
 public class ContaCorrente
 {
-    public Cliente titular;
-    public int agencia;
-    public int numero;
-    private double saldo = 100;
-    public void DefinirSaldo(double saldo)
-    {
-        if (saldo < 0)
+    public Cliente Titular { get; set; }
+    public int Agencia { get; set; }
+    public int Numero { get; set; }
+
+    private double _saldo = 100;
+
+    private int _idade = 10;
+
+    public double Saldo{
+        get
         {
-            return;
+            return _saldo;
         }
-        else
+        set
         {
-            this.saldo = saldo;
+            if (value < 0)
+            {
+                return;
+            }
+            _saldo = value;
         }
     }
-    public double ObterSaldo()
-    {
-        return saldo;
-    }
+
     public bool Sacar(double valor)
     {
-        if (saldo < valor)
+        if (_saldo < valor)
         {
             return false;
         }
 
-        saldo -= valor;
+        _saldo -= valor;
         return true;
     }
     public void Depositar(double valor)
     {
-        saldo += valor;
+        _saldo += valor;
     }
     public bool Transferir(double valor, ContaCorrente contaDestino)
     {
-        if (saldo < valor)
+        if (_saldo < valor)
         {
             return false;
         }
 
-        saldo -= valor;
+        _saldo -= valor;
         contaDestino.Depositar(valor);
         return true;
     }
